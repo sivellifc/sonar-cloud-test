@@ -1,12 +1,10 @@
-name: Build
+name: ci-sonar-cloud
 on:
-  push:
+  pull_request:
     branches:
       - develop
-  pull_request:
-    types: [opened, synchronize, reopened]
 jobs:
-  sonarcloud:
+  run-ci:
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
@@ -26,3 +24,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
