@@ -1,12 +1,10 @@
-name: Build
+name: ci-sonar-cloud
 on:
-  push:
+  pull_request:
     branches:
       - develop
-  pull_request:
-    types: [opened, synchronize, reopened]
 jobs:
-  sonarcloud:
+  run-ci:
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
